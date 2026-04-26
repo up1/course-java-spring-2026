@@ -5,6 +5,9 @@
   * Working with `@Transactional`, `Propagation` and `Isolation`
   * [Transaction propagation](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html)
 
+* [Multiple DataSource](https://github.com/up1/workshop-springboot-20241217/tree/main/multidb)
+  * [Reference](https://docs.spring.io/spring-boot/how-to/data-access.html#howto.data-access.configure-two-datasources)
+
 ## Demo Code with Transactional
 * Create `Product` entity
 * Create `ProductRepository` interface
