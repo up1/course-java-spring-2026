@@ -70,3 +70,16 @@ $java ReadOrderById.java
 
 Speedup: 1.28x  (cores available: 12)
 ```
+
+## 4. Demo with Threads
+* Thread Pool
+  * Efficiently manage a pool of worker threads to execute tasks concurrently without blocking the main thread
+  * CPU-bound tasks can benefit from a fixed thread pool sized to the number of CPU cores, while I/O-bound tasks can use a cached thread pool for dynamic scaling
+* Virtual Thread (Project Loom)
+  * Memory-efficient threads that can handle millions of concurrent tasks without blocking OS threads
+
+```
+$java DemoThreadPool.java 
+
+$java DemoVirtualThread.java
+```
