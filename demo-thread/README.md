@@ -83,3 +83,50 @@ $java DemoThreadPool.java
 
 $java DemoVirtualThread.java
 ```
+
+## 5. Virtual Thread in Soring Boot
+* Use virtual threads to handle a large number of concurrent requests without blocking OS threads
+* Configure Spring Boot to use virtual threads for request handling by setting the appropriate thread pool executor
+* Demonstrate improved scalability and responsiveness under high load compared to traditional thread pools  
+
+
+Configure max thread of tomcat to 100 in application.properties:
+```
+server.tomcat.max-threads=100
+```
+
+Config in application.properties to enable virtual threads:
+```
+spring.threads.virtual.enabled=true
+```
+
+Create DemoController.java
+```
+@RestController
+public class DemoController {
+    @GetMapping("/demo")
+    public String demo() {
+        // Simulate some work
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        return "Hello from virtual thread!";
+    }
+}
+```
+
+Start server and send requests:
+```
+$./mvnw spring-boot:run
+
+
+$curl http://localhost:8080/demo
+```
+
+Monitoring thread with jconsole or [visualvm](https://visualvm.github.io/):
+```
+$jconsole
+```
+
