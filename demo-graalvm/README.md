@@ -38,3 +38,46 @@ $native-image HelloWorld -o demo
 $./demo
 ```
 
+## Working with Spring Boot and GraalVM
+* Create project with Spring Initializr
+* Add `Spring Web` dependency
+* Add `GraalVM Native Support ` dependency
+* [Packaging of Spring Boot](https://docs.spring.io/spring-boot/reference/packaging/index.html)
+```
+
+Create HelloController.java
+```
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, GraalVM!";
+    }
+}
+```
+
+Build and run
+```
+$./mvnw spring-boot:run
+
+$./gradlew bootRun
+```
+
+Access to http://localhost:8080/hello
+
+
+Build native image
+```
+$./mvnw -Pnative native:compile
+$./target/demonative
+
+
+$./gradlew nativeCompile
+```
+
+Access to http://localhost:8080/hello again !!
+
