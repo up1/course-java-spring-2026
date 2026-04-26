@@ -18,6 +18,11 @@ public class DemoVirtualThread {
     }
 
     public static void main(String[] args) throws InterruptedException {
+
+        // Print process id
+        String processId = java.lang.management.ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
+        System.out.println("Process ID: " + processId);
+
         final int TOTAL_TASKS = 10_000_000;
         AtomicInteger completed = new AtomicInteger(0);
 

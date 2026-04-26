@@ -79,6 +79,8 @@ Speedup: 1.28x  (cores available: 12)
   * Memory-efficient threads that can handle millions of concurrent tasks without blocking OS threads
 
 ```
+$java -Xss256k DemoSimpleThreadWithoutPool.java
+
 $java DemoThreadPool.java 
 
 $java DemoVirtualThread.java
