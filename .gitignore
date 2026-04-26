@@ -1,0 +1,9 @@
+*.key
+target/
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+.idea/
+.vscode/
