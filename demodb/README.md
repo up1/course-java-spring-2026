@@ -3,6 +3,7 @@
   * Default
   * Working with `@Transactional`
   * Working with `@Transactional`, `Propagation` and `Isolation`
+  * [Transaction propagation](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html)
 
 ## Demo Code with Transactional
 * Create `Product` entity
