@@ -18,6 +18,10 @@
 
 Run
 ```
+// Generate 10 million orders and write to orders.csv
+$java SimpleWrite.java
+
+// Generate 10 million orders with multiple producer threads and write to orders.csv
 $java WriteOrders.java
 ```
 
