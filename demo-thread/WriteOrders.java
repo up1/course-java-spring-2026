@@ -12,7 +12,7 @@ public class WriteOrders {
     private static final int BATCH_SIZE = 10_000;
     private static final String OUTPUT_FILE = "orders.csv";
     private static final String POISON_PILL = "__DONE__";
-    private static final String[] STATUSES = {"pending", "completed", "cancelled"};
+    private static final String[] STATUSES = { "pending", "completed", "cancelled" };
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public static void main(String[] args) throws Exception {
@@ -29,7 +29,8 @@ public class WriteOrders {
                 bw.newLine();
                 while (true) {
                     String batch = queue.take();
-                    if (batch == POISON_PILL) break;
+                    if (batch == POISON_PILL)
+                        break;
                     bw.write(batch);
                 }
             } catch (Exception e) {
@@ -55,9 +56,9 @@ public class WriteOrders {
                     double amount = Math.round(rng.nextDouble() * 9999_99) / 100.0;
                     String status = STATUSES[rng.nextInt(STATUSES.length)];
                     sb.append(id).append(',')
-                      .append(date).append(',')
-                      .append(String.format("%.2f", amount)).append(',')
-                      .append(status).append('\n');
+                            .append(date).append(',')
+                            .append(String.format("%.2f", amount)).append(',')
+                            .append(status).append('\n');
                 }
                 try {
                     queue.put(sb.toString());
@@ -77,4 +78,3 @@ public class WriteOrders {
                 TOTAL_ORDERS, OUTPUT_FILE, elapsed / 1000.0);
     }
 }
-

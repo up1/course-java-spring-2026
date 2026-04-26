@@ -8,8 +8,8 @@ public class ReadOrderById {
     // ----------------------------------------------------------------
     // Approach 1 : O(n) linear scan
     // Reads through the entire file every time until the id is found.
-    // Time  : O(n)  — worst case reads all 10 M lines
-    // Memory: O(1)  — no data stored in memory
+    // Time : O(n) — worst case reads all 10 M lines
+    // Memory: O(1) — no data stored in memory
     // ----------------------------------------------------------------
     static double findByIdLinear(int targetId) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(FILE), 1 << 20)) {
@@ -30,10 +30,10 @@ public class ReadOrderById {
     }
 
     // ----------------------------------------------------------------
-    // Approach 2 : O(1) HashMap lookup  (after O(n) build phase)
+    // Approach 2 : O(1) HashMap lookup (after O(n) build phase)
     // Loads order_id -> order_amount into a HashMap once, then any
     // subsequent lookup is O(1).
-    // Time  : O(n) build + O(1) per query
+    // Time : O(n) build + O(1) per query
     // Memory: O(n) — holds all 10 M entries
     // ----------------------------------------------------------------
     static HashMap<Integer, Double> buildIndex() throws IOException {
@@ -58,7 +58,7 @@ public class ReadOrderById {
     // Demo: compare both approaches for a few sample IDs
     // ----------------------------------------------------------------
     public static void main(String[] args) throws Exception {
-        int[] sampleIds = {1, 500_000, 5_000_000, 9_999_999};
+        int[] sampleIds = { 1, 500_000, 5_000_000, 9_999_999 };
 
         System.out.println("=== Approach 1: O(n) linear scan ===");
         for (int id : sampleIds) {
@@ -84,4 +84,3 @@ public class ReadOrderById {
         }
     }
 }
-
