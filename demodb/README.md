@@ -1,7 +1,8 @@
 # Working with Database
-* Manage transaction with `@Transactional`
-* Manage multiple data sources
-
+* Manage transaction 
+  * Default
+  * Working with `@Transactional`
+  * Working with `@Transactional`, `Propagation` and `Isolation`
 
 ## Demo Code with Transactional
 * Create `Product` entity
@@ -33,3 +34,48 @@ Testing with curl 2
 ```
 $curl -X POST -H "Content-Type: application/json" -d '{"name": "Product A", "description": "Description of Product A"}' http://localhost:8080/api/process2
 ``` 
+
+## Demo Code with Transactional, Propagation and Isolation
+* Create `Order` entity
+* Create `OrderRepository` interface
+* Create `OrderService` class with `@Transactional` annotation, `Propagation` and `Isolation`
+* Create `OrderController` class with REST endpoints
+* Test with curl
+
+Process with create a new order and update product stock
+* Create `OrderService` class with method `createOrder` with `@Transactional` annotation, `Propagation.REQUIRED` and `Isolation.READ_COMMITTED`
+* Create `ProductService` class with method `updateStock` with `@Transactional` annotation, `Propagation.REQUIRES_NEW` and `Isolation.READ_COMMITTED`
+* Create `OrderController` class with REST endpoint to create order
+* Test with curl
+
+Project
+```
+POST /api/orders
+  └─ OrderService.createOrder()          [REQUIRED, READ_COMMITTED]  ← outer TX
+       ├─ save Order (status=PENDING)
+       ├─ ProductService.updateStock()   [REQUIRES_NEW, READ_COMMITTED] ← inner TX (independent)
+       │    └─ deduct stock, save Product
+       └─ update Order (status=COMPLETED)
+```
+
+Step 1 — create a product with stock:
+```
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"name": "Product A", "description": "Description of Product A", "stock": 10}' \
+  http://localhost:8080/api/process2
+```
+
+Step 2 — create an order (use the product `id` returned above, e.g. `1`):
+```
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"productId": 1, "quantity": 3}' \
+  http://localhost:8080/api/orders
+```
+
+Step 3 — test insufficient stock (should throw error):
+```
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"productId": 1, "quantity": 100}' \
+  http://localhost:8080/api/orders
+```
+```
