@@ -16,7 +16,7 @@ public class SimpleWrite {
 
         long startTime = System.currentTimeMillis();
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("orders.csv"), 1 << 16)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("orders.csv"), 1 << 20)) {
             writer.write("order_id,order_date,order_amount,order_status");
             writer.newLine();
 
