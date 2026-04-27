@@ -41,14 +41,14 @@ public class HelloThread {
 
     private static void simpleThreadWithPoolExample() {
         // Create a thread pool and submit 10 tasks
-        ExecutorService executor = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 10; i++) {
-            final int threadId = i;
-            executor.submit(() -> {
-                System.out.println("Hello from simpleThreadWithPoolExample " + threadId);
-            });
+        try (ExecutorService executor = Executors.newFixedThreadPool(5)) {
+            for (int i = 0; i < 10; i++) {
+                final int threadId = i;
+                executor.submit(() -> {
+                    System.out.println("Hello from simpleThreadWithPoolExample " + threadId);
+                });
+            }
         }
-        executor.shutdown();
     }
 
     
