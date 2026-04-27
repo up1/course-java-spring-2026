@@ -43,7 +43,7 @@ $./demo
 * Add `Spring Web` dependency
 * Add `GraalVM Native Support ` dependency
 * [Packaging of Spring Boot](https://docs.spring.io/spring-boot/reference/packaging/index.html)
-```
+
 
 Create HelloController.java
 ```
