@@ -56,10 +56,9 @@ $java ReadOrderById.java
   * Use BufferedReader for efficient file reading
 * Approach 2: O(n) parallel stream (ForkJoinPool with available CPU cores)
   * Read orders.csv line by line, parse order_amount, and sum for all orders with order_status = "completed" using Java 8 parallel streams for concurrent processing
-  * Use BufferedReader for efficient file reading
 
-  ```
-  $java SummarizeOrder.java
+```
+$java SummarizeOrder.java
 === Approach 1: Sequential O(n) ===
   Total completed amount : 16,667,398,499.30
   Time                   : 1061 ms
