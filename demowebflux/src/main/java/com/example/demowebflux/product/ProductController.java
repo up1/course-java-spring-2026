@@ -1,7 +1,6 @@
 package com.example.demowebflux.product;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,28 +16,25 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private final ProductRepository repository;
+    private final ProductService service;
 
-    public ProductController(ProductRepository repository) {
-        this.repository = repository;
+    public ProductController(ProductService service) {
+        this.service = service;
     }
 
     @GetMapping
     public Flux<Product> getAll() {
-        return repository.findAll();
+        return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity<Product>> getById(@PathVariable Long id) {
-        return repository.findById(id)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+    public Mono<Product> getById(@PathVariable Long id) {
+        return service.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Product> create(@RequestBody Product product) {
-        product.setId(null);
-        return repository.save(product);
+        return service.create(product);
     }
 }
