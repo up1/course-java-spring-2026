@@ -23,7 +23,7 @@ public class DemoVirtualThread {
         String processId = java.lang.management.ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
         System.out.println("Process ID: " + processId);
 
-        final int TOTAL_TASKS = 10_000_000;
+        final int TOTAL_TASKS = 1_000_000;
         AtomicInteger completed = new AtomicInteger(0);
 
         long start = System.currentTimeMillis();

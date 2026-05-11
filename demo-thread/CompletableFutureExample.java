@@ -3,6 +3,7 @@ import java.util.concurrent.CompletableFuture;
 public class CompletableFutureExample {
     public static void main(String[] args) {
         // 1. Start the task and chain dependencies immediately
+        System.out.println("Start");
         CompletableFuture.supplyAsync(() -> fetchRawData())
                 .thenApply(data -> data.toUpperCase()) // 2. Transform when ready
                 .thenAccept(processed -> { // 3. Consume when ready
