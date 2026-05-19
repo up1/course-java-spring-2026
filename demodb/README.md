@@ -17,16 +17,23 @@
 
 Enable log of sql in file `application.properties`
 ```
+# Enable log of database
 spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-logging.level.org.hibernate.SQL=DEBUG
-logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+#spring.jpa.properties.hibernate.format_sql=true
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+# Enable virtual thread in java 21
+spring.threads.virtual.enabled=true
 ```
 
 Enable transaction log in file `application.properties` 
 ```
-logging.level.org.springframework.transaction=DEBUG
+# Enable transaction log
 logging.level.org.hibernate.engine.transaction.internal.TransactionImpl=DEBUG
+logging.level.org.springframework.transaction=DEBUG
+logging.level.org.springframework.orm.jpa=DEBUG
+logging.level.org.hibernate.transaction=DEBUG
 ```
 
 Testing with curl 1
