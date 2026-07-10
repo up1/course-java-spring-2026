@@ -4,7 +4,9 @@
   * Inheritance
   * Polymorphism
   * Encapsulation
+  * S.O.L.I.D
 * Modern Java features
+  * Generic 
   * Lambdas
   * Streams
   * Optionals
