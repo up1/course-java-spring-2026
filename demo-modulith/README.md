@@ -7,6 +7,9 @@
 REST API => order module === <OrderPlacedEvent>===> report module
 ```
 
+Testing to create a new order
+* http://localhost:8080/api/order/100
+
 ## Show modules with PlantUML
 Run test
 ```
