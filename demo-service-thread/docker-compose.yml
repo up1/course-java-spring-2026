@@ -1,0 +1,13 @@
+services:
+    demo-service-thread:
+      build: .
+      ports:
+        - "8080:8080"
+    
+    k6:
+      image: grafana/k6:latest
+      environment:
+        - TARGET_HOST=demo-service-thread
+      volumes:
+        - ./k6:/scripts
+      command: run /scripts/load_test.js
