@@ -3,6 +3,15 @@
 * Virtual Thread
 
 
+## Flow of api
+```
+Client -> Controller -> Service -> Get User from API
+                                -> Get Orders from API
+                                -> Get Payment from API
+    
+```
+
+
 ## Testing service with default thread pool (Tomcat Thread)
 * server.tomcat.threads.max=10
 ```
