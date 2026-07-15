@@ -81,5 +81,11 @@ $./gradlew nativeCompile
 
 Access to http://localhost:8080/hello again !!
 
+
+Build Docker Image
+```
+$./mvnw -Pnative spring-boot:build-image
+```
+
 ## Working with Container Image
 * https://docs.spring.io/spring-boot/how-to/native-image/developing-your-first-application.html
