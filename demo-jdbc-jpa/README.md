@@ -2,6 +2,7 @@
 * JDBC API
 * Spring Data JPA
 * H2 Database
+* Bean validation
 
 
 ## Requirements
