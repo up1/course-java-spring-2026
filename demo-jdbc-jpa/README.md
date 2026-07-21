@@ -1,6 +1,6 @@
 # Workshop with JDBC vs Spring Data JPA
-* JDBC API
-* Spring Data JPA
+* JDBC API with [Spring JDBC](https://docs.spring.io/spring-framework/reference/data-access/jdbc.html)
+* [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
 * H2 Database
 * Bean validation
 
