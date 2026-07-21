@@ -1,5 +1,6 @@
-package com.example.db.order;
+package com.example.db.order.jdbc;
 
+import com.example.db.order.OrderItem;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 

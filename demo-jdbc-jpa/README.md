@@ -17,8 +17,7 @@ Database
 orders 1 ───> * order_items
 ```
 
-
-## Testing
+## Testing with JDBC
 
 ### Create a new Order
 ```
@@ -49,6 +48,39 @@ $curl http://localhost:8080/jdbc/orders
 ### Get Order by ID
 ```
 $curl http://localhost:8080/jdbc/orders/1
+```
+
+## Testing with JPA
+
+### Create a new Order
+```
+$curl -X POST http://localhost:8080/jpa/orders \
+  -H "Content-Type: application/json" \
+  -d '{
+    "customerName": "Somkiat",
+    "items": [
+      {
+        "productName": "Mechanical Keyboard",
+        "quantity": 1,
+        "unitPrice": 3500.00
+      },
+      {
+        "productName": "USB-C Cable",
+        "quantity": 2,
+        "unitPrice": 450.00
+      }
+    ]
+  }'
+```
+
+### Get All Orders
+```
+$curl http://localhost:8080/jpa/orders
+```
+
+### Get Order by ID
+```
+$curl http://localhost:8080/jpa/orders/1
 ```
 
 ## Comparison
